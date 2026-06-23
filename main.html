@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+*{box-sizing:border-box;}
+body{margin:0;}
+::selection{background:#10b981;color:#04130c;}
+@keyframes irisFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes irisPulse{0%,100%{opacity:1;transform:translateX(-50%) scale(1)}50%{opacity:0.45;transform:translateX(-50%) scale(0.78)}}
+@keyframes irisLid{0%,88%,100%{transform:translateY(-104%)}94%{transform:translateY(0)}}
+</style>
+</helmet>
+<div ref="{{ rootRef }}" data-screen-label="Landing" style="--bg:#f6f6f4;--surface:#ffffff;--surface2:#eeeeec;--border:rgba(0,0,0,0.12);--text:#0a0a0a;--text2:rgba(10,10,10,0.60);--text3:rgba(10,10,10,0.42);--accent:#10b981;--accent2:#34d399;--accent-soft:rgba(16,185,129,0.12);--accent-text:#04130c;background:var(--bg);color:var(--text);font-family:'Helvetica Neue',Helvetica,Arial,system-ui,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden;">
+
+  <nav style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:16px 32px;background:var(--bg);border-bottom:1px solid var(--border);">
+    <a href="#top" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);">
+      <span aria-hidden="true" style="position:relative;width:24px;height:24px;display:inline-block;flex:none;">
+        <span style="position:absolute;inset:0;border-radius:7px;background:var(--surface2);border:1px solid var(--border);"></span>
+        <span style="position:absolute;top:1px;left:50%;transform:translateX(-50%);width:2px;height:4px;background:var(--accent);"></span>
+        <span style="position:absolute;top:-3px;left:50%;transform:translateX(-50%);width:5px;height:5px;border-radius:50%;background:var(--accent);animation:irisPulse 2.6s ease-in-out infinite;"></span>
+        <span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:13px;height:13px;border-radius:50%;background:var(--accent-soft);border:1.5px solid var(--accent);"></span>
+        <span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:6px;height:6px;border-radius:50%;background:var(--accent);"></span>
+      </span>
+      <span style="font-size:19px;font-weight:600;letter-spacing:-0.02em;">Cue</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:30px;">
+      <a href="#how" style="text-decoration:none;color:var(--text2);font-size:15px;" style-hover="color:var(--text)">How it works</a>
+      <a href="#cases" style="text-decoration:none;color:var(--text2);font-size:15px;" style-hover="color:var(--text)">Use cases</a>
+      <a href="#why" style="text-decoration:none;color:var(--text2);font-size:15px;" style-hover="color:var(--text)">Why continual</a>
+      <a href="#research" style="text-decoration:none;color:var(--text2);font-size:15px;" style-hover="color:var(--text)">Research</a>
+      <a href="#waitlist" style="text-decoration:none;background:var(--accent);color:var(--accent-text);font-size:15px;font-weight:600;padding:10px 18px;border-radius:9px;" style-hover="background:var(--accent2)">Request access</a>
+    </div>
+  </nav>
+
+  <div id="top" style="position:relative;">
+    <div style="position:absolute;top:0;left:0;right:0;height:780px;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:58px 58px;-webkit-mask-image:radial-gradient(closest-side at 50% 0%,#000,transparent 78%);mask-image:radial-gradient(closest-side at 50% 0%,#000,transparent 78%);opacity:0.5;pointer-events:none;"></div>
+    <div style="position:absolute;top:-240px;left:50%;transform:translateX(-50%);width:820px;height:520px;background:radial-gradient(closest-side,var(--accent-soft),transparent 70%);opacity:0.55;pointer-events:none;"></div>
+
+    <section style="position:relative;max-width:1180px;margin:0 auto;padding:clamp(70px,10vw,120px) 32px clamp(50px,6vw,80px);">
+      <div aria-hidden="true" style="position:absolute;top:44px;right:8px;width:124px;height:124px;animation:irisFloat 5s ease-in-out infinite;z-index:2;">
+        <div style="position:absolute;inset:0;border-radius:28px;background:var(--surface);border:1px solid var(--border);box-shadow:0 24px 60px -30px rgba(0,0,0,0.55);"></div>
+        <div style="position:absolute;top:-13px;left:50%;transform:translateX(-50%);width:2px;height:13px;background:var(--accent);"></div>
+        <div style="position:absolute;top:-21px;left:50%;transform:translateX(-50%);width:9px;height:9px;border-radius:50%;background:var(--accent);animation:irisPulse 2.6s ease-in-out infinite;"></div>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:var(--accent-soft);border:3px solid var(--accent);overflow:hidden;">
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:30px;height:30px;border-radius:50%;background:#04130c;">
+            <div style="position:absolute;top:5px;right:5px;width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,0.85);"></div>
+          </div>
+          <div style="position:absolute;inset:0;background:var(--surface);animation:irisLid 5.5s ease-in-out infinite;"></div>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:12.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;">Research preview · Continual learning for video</div>
+        <h1 style="font-size:clamp(42px,6.4vw,86px);line-height:1.02;letter-spacing:-0.035em;font-weight:600;margin:0;max-width:16ch;">New actions, learned from a few examples.</h1>
+        <p style="font-size:clamp(17px,1.5vw,21px);line-height:1.55;color:var(--text2);max-width:62ch;margin:28px 0 0;">Cue learns to recognize an action from a support set of three to five clips — with no labelled dataset and no retraining. It adapts at test time and improves continuously from sparse human feedback.</p>
+
+        <div style="margin-top:40px;">
+          <sc-if value="{{ notJoined }}" hint-placeholder-val="{{ true }}">
+            <form onSubmit="{{ join }}" style="display:flex;gap:10px;flex-wrap:wrap;max-width:540px;">
+              <input ref="{{ heroEmailRef }}" name="email" type="email" required placeholder="you@lab.ai" style="flex:1;min-width:220px;padding:15px 18px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:16px;font-family:inherit;outline:none;" style-focus="border-color:var(--accent)" />
+              <button type="submit" style="padding:15px 26px;border-radius:10px;border:0;background:var(--accent);color:var(--accent-text);font-weight:600;font-size:16px;font-family:inherit;cursor:pointer;white-space:nowrap;" style-hover="background:var(--accent2)">Join the waitlist</button>
+            </form>
+            <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:12px;color:var(--text3);margin-top:12px;letter-spacing:0.02em;">Research preview · access granted on a rolling basis</div>
+            <div style="display:flex;align-items:center;gap:12px;margin-top:20px;">
+              <div style="display:flex;">
+                <span style="width:28px;height:28px;border-radius:50%;background:var(--accent-soft);border:2px solid var(--bg);box-shadow:0 0 0 1px var(--border);"></span>
+                <span style="width:28px;height:28px;border-radius:50%;background:var(--accent-soft);border:2px solid var(--bg);box-shadow:0 0 0 1px var(--border);margin-left:-9px;"></span>
+                <span style="width:28px;height:28px;border-radius:50%;background:var(--accent-soft);border:2px solid var(--bg);box-shadow:0 0 0 1px var(--border);margin-left:-9px;"></span>
+                <span style="width:28px;height:28px;border-radius:50%;background:var(--accent-soft);border:2px solid var(--bg);box-shadow:0 0 0 1px var(--border);margin-left:-9px;"></span>
+              </div>
+              <span style="font-size:14px;color:var(--text2);">Join <strong style="color:var(--text);">1,200+</strong> researchers &amp; engineers already in line.</span>
+            </div>
+          </sc-if>
+          <sc-if value="{{ joined }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;gap:14px;align-items:center;padding:18px 20px;border-radius:12px;border:1px solid var(--accent);background:var(--accent-soft);color:var(--text);max-width:540px;flex-wrap:wrap;">
+              <span style="color:var(--accent);font-size:18px;font-weight:700;">✓</span>
+              <span style="font-size:16px;">You're in line at <strong>#{{ position }}</strong> — invite friends to move up.</span>
+              <a href="#waitlist" style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:13px;color:var(--accent);text-decoration:none;margin-left:auto;white-space:nowrap;" style-hover="text-decoration:underline">Skip the line ↓</a>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+
+      <div style="margin-top:clamp(50px,6vw,80px);">
+        <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);margin-bottom:14px;">Fig. 1 — Few-shot adaptation, live</div>
+        <div style="position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;border:1px solid var(--border);background:var(--surface);box-shadow:0 30px 80px -40px rgba(0,0,0,0.6);">
+          <sc-if value="{{ notHeroVideoLoaded }}">
+            <button type="button" onClick="{{ loadHeroVideo }}" aria-label="Play few-shot adaptation demo" style="position:absolute;inset:0;width:100%;height:100%;border:0;background:linear-gradient(180deg,var(--surface2),var(--surface));color:var(--text);font-family:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;">
+              <span style="width:68px;height:68px;border-radius:50%;background:var(--accent);color:var(--accent-text);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 40px -12px var(--accent);">
+                <span style="display:block;width:0;height:0;border-top:11px solid transparent;border-bottom:11px solid transparent;border-left:18px solid currentColor;margin-left:5px;"></span>
+              </span>
+              <span style="font-size:15px;font-weight:600;letter-spacing:-0.01em;">Play demo</span>
+            </button>
+          </sc-if>
+          <sc-if value="{{ heroVideoLoaded }}">
+            <iframe src="{{ heroVideoUrl }}" allow="autoplay" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
+          </sc-if>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section id="how" style="border-top:1px solid var(--border);">
+    <div style="max-width:1180px;margin:0 auto;padding:clamp(80px,11vw,140px) 32px;">
+      <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:12.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;">01 — Method</div>
+      <h2 style="font-size:clamp(30px,4vw,52px);line-height:1.05;letter-spacing:-0.03em;font-weight:600;margin:0;max-width:20ch;">From a support set to a working detector.</h2>
+      <p style="font-size:clamp(16px,1.4vw,19px);line-height:1.55;color:var(--text2);max-width:60ch;margin:22px 0 0;">No annotation team, no per-frame masks. You define the action by example; the model handles generalization and keeps adapting online.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:56px;">
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:30px;">
+          <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:13px;color:var(--accent);margin-bottom:18px;">01</div>
+          <h3 style="font-size:21px;font-weight:600;letter-spacing:-0.01em;margin:0 0 10px;">Support</h3>
+          <p style="font-size:15.5px;line-height:1.6;color:var(--text2);margin:0;">A support set of 3–5 clips defines the action — no bounding boxes, no per-frame labels.</p>
+        </div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:30px;">
+          <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:13px;color:var(--accent);margin-bottom:18px;">02</div>
+          <h3 style="font-size:21px;font-weight:600;letter-spacing:-0.01em;margin:0 0 10px;">Adaptation</h3>
+          <p style="font-size:15.5px;line-height:1.6;color:var(--text2);margin:0;">The model adapts to the new class in seconds via student–teacher distillation — generalizing the action, not memorizing frames.</p>
+        </div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:30px;">
+          <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:13px;color:var(--accent);margin-bottom:18px;">03</div>
+          <h3 style="font-size:21px;font-weight:600;letter-spacing:-0.01em;margin:0 0 10px;">Inference</h3>
+          <p style="font-size:15.5px;line-height:1.6;color:var(--text2);margin:0;">It recognizes the action in unseen video and refines online from sparse human corrections.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="platform" style="border-top:1px solid var(--border);background:var(--surface2);">
+    <div style="max-width:1180px;margin:0 auto;padding:clamp(80px,11vw,140px) 32px;">
+      <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:12.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;">02 — The platform</div>
+      <h2 style="font-size:clamp(30px,4vw,52px);line-height:1.05;letter-spacing:-0.03em;font-weight:600;margin:0;max-width:20ch;">See the platform in action.</h2>
+      <p style="font-size:clamp(16px,1.4vw,19px);line-height:1.55;color:var(--text2);max-width:58ch;margin:22px 0 0;">Label a few clips, watch recognition appear, and correct it in place — the model sharpens from sparse feedback, live in the product.</p>
+      <div style="max-width:1000px;margin:48px auto 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--bg);box-shadow:0 40px 90px -50px rgba(0,0,0,0.7);">
+        <div style="display:flex;align-items:center;gap:14px;padding:13px 16px;border-bottom:1px solid var(--border);background:var(--surface);">
+          <div style="display:flex;gap:7px;">
+            <span style="width:11px;height:11px;border-radius:50%;background:rgba(150,150,150,0.4);display:block;"></span>
+            <span style="width:11px;height:11px;border-radius:50%;background:rgba(150,150,150,0.4);display:block;"></span>
+            <span style="width:11px;height:11px;border-radius:50%;background:rgba(150,150,150,0.4);display:block;"></span>
+          </div>
+          <div style="flex:1;display:flex;justify-content:center;">
+            <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:12px;color:var(--text3);background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:5px 16px;letter-spacing:0.02em;">app.cue.ai</div>
+          </div>
+          <div style="width:46px;flex:none;"></div>
+        </div>
+        <div style="position:relative;width:100%;aspect-ratio:129/106;background:#000;">
+          <video autoplay loop muted playsinline preload="auto" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0;"><source src="assets/platform-demo.mp4" type="video/mp4" /></video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cases" style="border-top:1px solid var(--border);">
+    <div style="max-width:1180px;margin:0 auto;padding:clamp(80px,11vw,140px) 32px;">
+      <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:12.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;">03 — Use cases</div>
+      <h2 style="font-size:clamp(30px,4vw,52px);line-height:1.05;letter-spacing:-0.03em;font-weight:600;margin:0;max-width:20ch;">Any action you can show, Cue can learn to recognize.</h2>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:56px;">
+        <div style="border:1px solid var(--border);border-radius:14px;padding:28px;background:var(--surface);" style-hover="border-color:var(--accent)">
+          <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:12px;color:var(--text3);margin-bottom:16px;">/ 01</div>
+          <h3 style="font-size:19px;font-weight:600;margin:0 0 8px;">Robotics &amp; manipulation</h3>
+          <p style="font-size:15px;line-height:1.6;color:var(--text2);margin:0;">Teach a policy to spot grasps, placements, or failures from demonstration clips.</p>
+        </div>
+        <div style="border:1px solid var(--border);border-radius:14px;padding:28px;background:var(--surface);" style-hover="border-color:var(--accent)">
+          <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:12px;color:var(--text3);margin-bottom:16px;">/ 02</div>
+          <h3 style="font-size:19px;font-weight:600;margin:0 0 8px;">Industrial safety</h3>
+          <p style="font-size:15px;line-height:1.6;color:var(--text2);margin:0;">Flag unsafe actions on a line — no protective gear, hand-in-machine, missed steps.</p>
+        </div>
+        <div style="border:1px solid var(--border);border-radius:14px;padding:28px;background:var(--surface);" style-hover="border-color:var(--accent)">
+          <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:12px;color:var(--text3);margin-bottom:16px;">/ 03</div>
+          <h3 style="font-size:19px;font-weight:600;margin:0 0 8px;">Sports &amp; performance</h3>
+          <p style="font-size:15px;line-height:1.6;color:var(--text2);margin:0;">Tag techniques, plays, and movement patterns from a coach's handful of examples.</p>
+        </div>
+        <div style="border:1px solid var(--border);border-radius:14px;padding:28px;background:var(--surface);" style-hover="border-color:var(--accent)">
+          <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:12px;color:var(--text3);margin-bottom:16px;">/ 04</div>
+          <h3 style="font-size:19px;font-weight:600;margin:0 0 8px;">Surgical &amp; clinical</h3>
+          <p style="font-size:15px;line-height:1.6;color:var(--text2);margin:0;">Recognize phases and instrument actions in procedure video without massive label sets.</p>
+        </div>
+        <div style="border:1px solid var(--border);border-radius:14px;padding:28px;background:var(--surface);" style-hover="border-color:var(--accent)">
+          <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:12px;color:var(--text3);margin-bottom:16px;">/ 05</div>
+          <h3 style="font-size:19px;font-weight:600;margin:0 0 8px;">Retail &amp; loss prevention</h3>
+          <p style="font-size:15px;line-height:1.6;color:var(--text2);margin:0;">Detect specific behaviors at the shelf or checkout from a few illustrative clips.</p>
+        </div>
+        <div style="border:1px solid var(--border);border-radius:14px;padding:28px;background:var(--surface);" style-hover="border-color:var(--accent)">
+          <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:12px;color:var(--text3);margin-bottom:16px;">/ 06</div>
+          <h3 style="font-size:19px;font-weight:600;margin:0 0 8px;">Autonomy &amp; ADAS</h3>
+          <p style="font-size:15px;line-height:1.6;color:var(--text2);margin:0;">Add a new road actor behavior to your stack from examples, not a re-labeled fleet.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why" style="border-top:1px solid var(--border);background:var(--surface2);">
+    <div style="max-width:1180px;margin:0 auto;padding:clamp(80px,11vw,140px) 32px;">
+      <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:12.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;">04 — Why continual learning</div>
+      <h2 style="font-size:clamp(30px,4vw,52px);line-height:1.05;letter-spacing:-0.03em;font-weight:600;margin:0 0 50px;max-width:18ch;">Continual, not periodic.</h2>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;">
+        <div style="border:1px solid var(--border);border-radius:16px;padding:34px;background:var(--bg);">
+          <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3);margin-bottom:24px;">Train from scratch</div>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="display:flex;gap:12px;color:var(--text2);font-size:15.5px;line-height:1.45;"><span style="color:var(--text3);">—</span>Label thousands of frames by hand</div>
+            <div style="display:flex;gap:12px;color:var(--text2);font-size:15.5px;line-height:1.45;"><span style="color:var(--text3);">—</span>Weeks of pipeline and GPU time per change</div>
+            <div style="display:flex;gap:12px;color:var(--text2);font-size:15.5px;line-height:1.45;"><span style="color:var(--text3);">—</span>The world drifts; the model goes stale</div>
+            <div style="display:flex;gap:12px;color:var(--text2);font-size:15.5px;line-height:1.45;"><span style="color:var(--text3);">—</span>Every new action restarts the cycle</div>
+          </div>
+        </div>
+        <div style="border:1px solid var(--accent);border-radius:16px;padding:34px;background:var(--bg);box-shadow:0 0 0 1px var(--accent-soft),0 20px 60px -40px var(--accent);">
+          <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;">With Cue</div>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="display:flex;gap:12px;color:var(--text);font-size:15.5px;line-height:1.45;"><span style="color:var(--accent);font-weight:700;">✓</span>3–5 examples, near-zero labeling</div>
+            <div style="display:flex;gap:12px;color:var(--text);font-size:15.5px;line-height:1.45;"><span style="color:var(--accent);font-weight:700;">✓</span>A new action ready in minutes</div>
+            <div style="display:flex;gap:12px;color:var(--text);font-size:15.5px;line-height:1.45;"><span style="color:var(--accent);font-weight:700;">✓</span>Adapts continuously as data shifts</div>
+            <div style="display:flex;gap:12px;color:var(--text);font-size:15.5px;line-height:1.45;"><span style="color:var(--accent);font-weight:700;">✓</span>Corrections compound — no full retrain</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <sc-if value="{{ showResearch }}" hint-placeholder-val="{{ true }}">
+  <section id="research" style="border-top:1px solid var(--border);">
+    <div style="max-width:1180px;margin:0 auto;padding:clamp(80px,11vw,140px) 32px;">
+      <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:12.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;">05 — Research</div>
+      <h2 style="font-size:clamp(30px,4vw,52px);line-height:1.05;letter-spacing:-0.03em;font-weight:600;margin:0;max-width:20ch;">Grounded in peer-reviewed work.</h2>
+      <p style="font-size:clamp(16px,1.4vw,19px);line-height:1.55;color:var(--text2);max-width:58ch;margin:22px 0 0;">The team behind Cue has published on continual learning, auto-labelling, and student–teacher models at top robotics and vision venues.</p>
+
+      <div style="margin-top:52px;border-top:1px solid var(--border);">
+        <div style="display:grid;grid-template-columns:150px 1fr auto;gap:24px;align-items:baseline;padding:26px 6px;border-bottom:1px solid var(--border);" style-hover="background:var(--surface)">
+          <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:13px;color:var(--accent);letter-spacing:0.04em;">ERF 2026</div>
+          <div>
+            <h3 style="font-size:19px;font-weight:600;line-height:1.3;margin:0 0 6px;letter-spacing:-0.01em;">Continual learning for on-robot perception</h3>
+            <p style="font-size:14.5px;line-height:1.55;color:var(--text2);margin:0;">Adapting recognition on-robot from sparse demonstrations, without offline retraining.</p>
+          </div>
+          <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:13px;color:var(--text3);">Robotics</div>
+        </div>
+        <div style="display:grid;grid-template-columns:150px 1fr auto;gap:24px;align-items:baseline;padding:26px 6px;border-bottom:1px solid var(--border);" style-hover="background:var(--surface)">
+          <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:13px;color:var(--accent);letter-spacing:0.04em;">CVPR 2026</div>
+          <div>
+            <h3 style="font-size:19px;font-weight:600;line-height:1.3;margin:0 0 6px;letter-spacing:-0.01em;">Data auto-labelling for video</h3>
+            <p style="font-size:14.5px;line-height:1.55;color:var(--text2);margin:0;">Turning a handful of human labels into supervision at scale.</p>
+          </div>
+          <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:13px;color:var(--text3);">Vision</div>
+        </div>
+        <div style="display:grid;grid-template-columns:150px 1fr auto;gap:24px;align-items:baseline;padding:26px 6px;border-bottom:1px solid var(--border);" style-hover="background:var(--surface)">
+          <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:13px;color:var(--accent);letter-spacing:0.04em;">ICCV 2025</div>
+          <div>
+            <h3 style="font-size:19px;font-weight:600;line-height:1.3;margin:0 0 6px;letter-spacing:-0.01em;">Student–teacher models for low-label learning</h3>
+            <p style="font-size:14.5px;line-height:1.55;color:var(--text2);margin:0;">Distilling robust recognition from limited labelled signal.</p>
+          </div>
+          <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:13px;color:var(--text3);">Vision</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <section id="waitlist" style="border-top:1px solid var(--border);background:var(--surface2);">
+    <div style="max-width:760px;margin:0 auto;padding:clamp(90px,12vw,160px) 32px;text-align:center;">
+      <div aria-hidden="true" style="position:relative;width:80px;height:80px;margin:0 auto 26px;animation:irisFloat 5s ease-in-out infinite;">
+        <div style="position:absolute;inset:0;border-radius:20px;background:var(--bg);border:1px solid var(--border);"></div>
+        <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);width:2px;height:10px;background:var(--accent);"></div>
+        <div style="position:absolute;top:-16px;left:50%;transform:translateX(-50%);width:7px;height:7px;border-radius:50%;background:var(--accent);animation:irisPulse 2.6s ease-in-out infinite;"></div>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:42px;height:42px;border-radius:50%;background:var(--accent-soft);border:2.5px solid var(--accent);overflow:hidden;">
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:20px;height:20px;border-radius:50%;background:#04130c;">
+            <div style="position:absolute;top:3px;right:3px;width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.85);"></div>
+          </div>
+          <div style="position:absolute;inset:0;background:var(--bg);animation:irisLid 4.5s ease-in-out infinite;"></div>
+        </div>
+      </div>
+      <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:12.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;">Research access</div>
+      <h2 style="font-size:clamp(34px,5vw,64px);line-height:1.03;letter-spacing:-0.035em;font-weight:600;margin:0;">Request access to the research preview.</h2>
+      <p style="font-size:clamp(17px,1.5vw,20px);line-height:1.55;color:var(--text2);margin:24px auto 40px;max-width:48ch;">We're granting access on a rolling basis to teams working on continual learning and video understanding.</p>
+
+      <sc-if value="{{ notJoined }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ join }}" style="display:flex;gap:10px;flex-wrap:wrap;max-width:520px;margin:0 auto;justify-content:center;">
+          <input ref="{{ footerEmailRef }}" name="email" type="email" required placeholder="you@lab.ai" style="flex:1;min-width:220px;padding:16px 18px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:16px;font-family:inherit;outline:none;" style-focus="border-color:var(--accent)" />
+          <button type="submit" style="padding:16px 28px;border-radius:10px;border:0;background:var(--accent);color:var(--accent-text);font-weight:600;font-size:16px;font-family:inherit;cursor:pointer;white-space:nowrap;" style-hover="background:var(--accent2)">Join the waitlist</button>
+        </form>
+        <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:12.5px;color:var(--text3);margin-top:16px;letter-spacing:0.02em;">1,200+ researchers &amp; engineers already in line · invite friends to skip ahead</div>
+      </sc-if>
+      <sc-if value="{{ joined }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:560px;margin:0 auto;">
+          <div style="display:flex;align-items:center;justify-content:center;gap:9px;margin-bottom:18px;">
+            <span style="color:var(--accent);font-size:18px;font-weight:700;">✓</span>
+            <span style="font-size:15px;color:var(--text2);">You're on the list</span>
+          </div>
+          <div style="font-size:clamp(52px,9vw,88px);line-height:1;font-weight:600;letter-spacing:-0.04em;">#{{ position }}</div>
+          <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text3);margin-top:12px;">Your spot in line</div>
+          <p style="font-size:16.5px;line-height:1.55;color:var(--text2);margin:24px auto 26px;max-width:42ch;">Skip ahead — every person who joins with your link moves you up <strong style="color:var(--text);">50 spots</strong>.</p>
+          <div style="display:flex;align-items:center;gap:6px;padding:6px 6px 6px 18px;border-radius:11px;border:1px solid var(--border);background:var(--bg);max-width:460px;margin:0 auto;">
+            <span style="flex:1;text-align:left;font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:14px;color:var(--text2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ refLink }}</span>
+            <button onClick="{{ copyLink }}" style="padding:11px 18px;border-radius:8px;border:0;background:var(--accent);color:var(--accent-text);font-weight:600;font-size:14px;font-family:inherit;cursor:pointer;white-space:nowrap;" style-hover="background:var(--accent2)">{{ copyLabel }}</button>
+          </div>
+          <div style="display:flex;gap:10px;margin:12px auto 0;max-width:460px;">
+            <button onClick="{{ shareX }}" style="flex:1;padding:13px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;" style-hover="border-color:var(--accent)">Share on X</button>
+            <button onClick="{{ shareIn }}" style="flex:1;padding:13px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;" style-hover="border-color:var(--accent)">Share on LinkedIn</button>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <footer style="border-top:1px solid var(--border);">
+    <div style="max-width:1180px;margin:0 auto;padding:36px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="width:10px;height:10px;border-radius:50%;background:var(--accent);display:inline-block;"></span>
+        <span style="font-size:16px;font-weight:600;letter-spacing:-0.02em;">Cue</span>
+      </div>
+      <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:12px;color:var(--text3);letter-spacing:0.02em;">Continual learning for video · © 2026</div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Dark&quot;,&quot;Light&quot;],&quot;default&quot;:&quot;Light&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Emerald&quot;,&quot;Blue&quot;,&quot;Violet&quot;,&quot;Amber&quot;],&quot;default&quot;:&quot;Emerald&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;showResearch&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;waitlistUrl&quot;:{&quot;editor&quot;:&quot;string&quot;,&quot;default&quot;:&quot;https://script.google.com/macros/s/AKfycbyCsOMz3OuPwGaWyZruUCoz2F77Ap7OuMDFQVbJlBpN9PIGbXKUFUNdsHfEqgjXJA4U/exec&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  static WAITLIST_URL = 'https://script.google.com/macros/s/AKfycbyCsOMz3OuPwGaWyZruUCoz2F77Ap7OuMDFQVbJlBpN9PIGbXKUFUNdsHfEqgjXJA4U/exec';
+
+  state = { joined: false, refCode: '', position: 0, copied: false, heroVideoLoaded: false };
+  rootRef = React.createRef();
+  heroEmailRef = React.createRef();
+  footerEmailRef = React.createRef();
+
+  getEmailFromEvent(e) {
+    const form = e?.currentTarget || e?.target?.closest?.('form') || e?.target;
+    const fromForm = form?.querySelector?.('input[type="email"]')?.value;
+    const fromHero = this.heroEmailRef.current?.value;
+    const fromFooter = this.footerEmailRef.current?.value;
+    return (fromForm || fromHero || fromFooter || '').trim();
+  }
+
+  waitlistEndpoint() {
+    return (this.props.waitlistUrl || Component.WAITLIST_URL).trim();
+  }
+
+  saveToWaitlist(email, refCode) {
+    const base = this.waitlistEndpoint();
+    if (!base) return;
+    const params = new URLSearchParams({
+      email,
+      refCode,
+      source: 'cue-landing',
+    });
+    const url = base + (base.includes('?') ? '&' : '?') + params.toString();
+    const img = new Image();
+    img.referrerPolicy = 'no-referrer';
+    img.src = url;
+  }
+
+  applyTheme() {
+    const root = this.rootRef.current;
+    if (!root) return;
+    const theme = this.props.theme ?? 'Light';
+    const accent = this.props.accent ?? 'Emerald';
+    const accents = {
+      Emerald: { a: '#10b981', a2: '#34d399', soft: 'rgba(16,185,129,0.12)', text: '#04130c' },
+      Blue:    { a: '#3b82f6', a2: '#60a5fa', soft: 'rgba(59,130,246,0.14)', text: '#ffffff' },
+      Violet:  { a: '#8b5cf6', a2: '#a78bfa', soft: 'rgba(139,92,246,0.14)', text: '#ffffff' },
+      Amber:   { a: '#f59e0b', a2: '#fbbf24', soft: 'rgba(245,158,11,0.16)', text: '#180e00' },
+    };
+    const ac = accents[accent] || accents.Emerald;
+    const dark = {
+      '--bg': '#0a0a0a', '--surface': '#141414', '--surface2': '#1c1c1c',
+      '--border': 'rgba(255,255,255,0.12)', '--text': '#fafafa',
+      '--text2': 'rgba(250,250,250,0.62)', '--text3': 'rgba(250,250,250,0.40)',
+    };
+    const light = {
+      '--bg': '#f6f6f4', '--surface': '#ffffff', '--surface2': '#eeeeec',
+      '--border': 'rgba(0,0,0,0.12)', '--text': '#0a0a0a',
+      '--text2': 'rgba(10,10,10,0.60)', '--text3': 'rgba(10,10,10,0.42)',
+    };
+    const pal = theme === 'Light' ? light : dark;
+    Object.entries(pal).forEach(([k, v]) => root.style.setProperty(k, v));
+    root.style.setProperty('--accent', ac.a);
+    root.style.setProperty('--accent2', ac.a2);
+    root.style.setProperty('--accent-soft', ac.soft);
+    root.style.setProperty('--accent-text', ac.text);
+  }
+
+  componentDidMount() { this.applyTheme(); }
+  componentDidUpdate() { this.applyTheme(); }
+
+  join = (e) => {
+    if (e) e.preventDefault();
+    if (this.state.joined) return;
+    const email = this.getEmailFromEvent(e);
+    if (!email) return;
+    const code = Math.random().toString(36).slice(2, 8).toUpperCase();
+    const position = 600 + Math.floor(Math.random() * 1800);
+    this.saveToWaitlist(email, code);
+    this.setState({ joined: true, refCode: code, position: position });
+    requestAnimationFrame(() => {
+      const el = document.getElementById('waitlist');
+      if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 20, behavior: 'smooth' });
+    });
+  };
+
+  refLink() { return 'https://cue.ai/r/' + (this.state.refCode || 'CUE'); }
+
+  copyLink = () => {
+    try { if (navigator.clipboard) navigator.clipboard.writeText(this.refLink()); } catch (e) {}
+    this.setState({ copied: true });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ copied: false }), 1800);
+  };
+
+  shareX = () => {
+    const text = 'I just joined the Cue waitlist — continual learning for video that learns a new action from just 5 examples. Skip the line:';
+    window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(this.refLink()), '_blank', 'noopener');
+  };
+
+  shareIn = () => {
+    window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(this.refLink()), '_blank', 'noopener');
+  };
+
+  loadHeroVideo = () => {
+    if (this.state.heroVideoLoaded) return;
+    this.setState({ heroVideoLoaded: true });
+  };
+
+  renderVals() {
+    return {
+      rootRef: this.rootRef,
+      heroEmailRef: this.heroEmailRef,
+      footerEmailRef: this.footerEmailRef,
+      joined: this.state.joined,
+      notJoined: !this.state.joined,
+      position: this.state.position ? this.state.position.toLocaleString() : '',
+      refLink: this.refLink(),
+      copied: this.state.copied,
+      copyLabel: this.state.copied ? 'Copied' : 'Copy link',
+      showResearch: this.props.showResearch ?? true,
+      heroVideoLoaded: this.state.heroVideoLoaded,
+      notHeroVideoLoaded: !this.state.heroVideoLoaded,
+      heroVideoUrl: 'https://drive.google.com/file/d/1_JSV0N_gkXMM5sReI72QT85qVFHsMir5/preview',
+      loadHeroVideo: this.loadHeroVideo,
+      join: this.join,
+      copyLink: this.copyLink,
+      shareX: this.shareX,
+      shareIn: this.shareIn,
+    };
+  }
+}
+</script>
+</body>
+</html>
