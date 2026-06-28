@@ -10,16 +10,55 @@
 <helmet>
 <style>
 *{box-sizing:border-box;}
-body{margin:0;}
+body{margin:0;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
 ::selection{background:#10b981;color:#04130c;}
 @keyframes irisFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 @keyframes irisPulse{0%,100%{opacity:1;transform:translateX(-50%) scale(1)}50%{opacity:0.45;transform:translateX(-50%) scale(0.78)}}
 @keyframes irisLid{0%,88%,100%{transform:translateY(-104%)}94%{transform:translateY(0)}}
+.cue-nav-toggle{display:none;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.cue-nav-mobile{display:none;position:fixed;inset:0;z-index:60;background:var(--bg);flex-direction:column;padding:20px;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+.cue-nav-mobile[data-open="true"]{display:flex;}
+.cue-nav-mobile-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;}
+.cue-nav-mobile-links{display:flex;flex-direction:column;gap:4px;}
+.cue-nav-mobile-links a{display:block;padding:14px 4px;text-decoration:none;color:var(--text);font-size:18px;font-weight:500;border-bottom:1px solid var(--border);}
+.cue-nav-mobile-cta{margin-top:20px;}
+.cue-nav-mobile-cta a{display:block;text-align:center;text-decoration:none;background:var(--accent);color:var(--accent-text);font-size:16px;font-weight:600;padding:14px 18px;border-radius:10px;}
+@media (max-width:767px){
+  .cue-nav{padding:12px max(20px,env(safe-area-inset-right)) 12px max(20px,env(safe-area-inset-left)) !important;}
+  .cue-nav-mobile{padding:max(20px,env(safe-area-inset-top)) max(20px,env(safe-area-inset-right)) max(20px,env(safe-area-inset-bottom)) max(20px,env(safe-area-inset-left)) !important;}
+  .cue-nav-links{display:none !important;}
+  .cue-nav-toggle{display:flex !important;}
+  .cue-hero-iris{display:none !important;}
+  .cue-hero-grid{height:520px !important;}
+  .cue-hero-glow{width:min(100vw,520px) !important;height:360px !important;top:-160px !important;}
+  .cue-section-inner{padding-left:20px !important;padding-right:20px !important;}
+  .cue-research-row{grid-template-columns:1fr !important;gap:10px !important;padding:22px 0 !important;}
+  .cue-research-tag{font-size:12px !important;}
+  .cue-research-cat{justify-self:start !important;margin-top:4px !important;}
+  .cue-footer-inner{flex-direction:column !important;align-items:flex-start !important;padding:28px 20px !important;}
+  .cue-form-row{flex-direction:column !important;align-items:stretch !important;}
+  .cue-form-row input,.cue-form-row button{width:100% !important;min-width:0 !important;flex:1 1 auto !important;}
+  .cue-joined-banner{flex-direction:column !important;align-items:flex-start !important;}
+  .cue-joined-banner a{margin-left:0 !important;margin-top:4px !important;}
+  .cue-social-row{flex-direction:column !important;}
+  .cue-social-row button{width:100% !important;}
+  .cue-ref-row{flex-direction:column !important;align-items:stretch !important;padding:12px !important;}
+  .cue-ref-row span{text-align:center !important;white-space:normal !important;word-break:break-all !important;padding:4px 0 8px !important;}
+  .cue-ref-row button{width:100% !important;}
+  .cue-platform-bar{padding:10px 12px !important;gap:10px !important;}
+  .cue-platform-bar .cue-url-pill{font-size:11px !important;padding:4px 10px !important;max-width:calc(100vw - 120px) !important;overflow:hidden !important;text-overflow:ellipsis !important;white-space:nowrap !important;}
+  .cue-platform-spacer{width:32px !important;}
+  .cue-hero-social{flex-wrap:wrap !important;}
+}
+@media (max-width:480px){
+  .cue-section-inner{padding-left:16px !important;padding-right:16px !important;}
+  .cue-nav{padding:10px 16px !important;}
+}
 </style>
 </helmet>
 <div ref="{{ rootRef }}" data-screen-label="Landing" style="--bg:#f6f6f4;--surface:#ffffff;--surface2:#eeeeec;--border:rgba(0,0,0,0.12);--text:#0a0a0a;--text2:rgba(10,10,10,0.60);--text3:rgba(10,10,10,0.42);--accent:#10b981;--accent2:#34d399;--accent-soft:rgba(16,185,129,0.12);--accent-text:#04130c;background:var(--bg);color:var(--text);font-family:'Helvetica Neue',Helvetica,Arial,system-ui,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden;">
 
-  <nav style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:16px 32px;background:var(--bg);border-bottom:1px solid var(--border);">
+  <nav class="cue-nav" style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:16px 32px;background:var(--bg);border-bottom:1px solid var(--border);">
     <a href="#top" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);">
       <span aria-hidden="true" style="position:relative;width:24px;height:24px;display:inline-block;flex:none;">
         <span style="position:absolute;inset:0;border-radius:7px;background:var(--surface2);border:1px solid var(--border);"></span>
@@ -30,21 +69,47 @@ body{margin:0;}
       </span>
       <span style="font-size:19px;font-weight:600;letter-spacing:-0.02em;">Cue</span>
     </a>
-    <div style="display:flex;align-items:center;gap:30px;">
+    <div class="cue-nav-links" style="display:flex;align-items:center;gap:30px;">
       <a href="#how" style="text-decoration:none;color:var(--text2);font-size:15px;" style-hover="color:var(--text)">How it works</a>
       <a href="#cases" style="text-decoration:none;color:var(--text2);font-size:15px;" style-hover="color:var(--text)">Use cases</a>
       <a href="#why" style="text-decoration:none;color:var(--text2);font-size:15px;" style-hover="color:var(--text)">Why continual</a>
       <a href="#research" style="text-decoration:none;color:var(--text2);font-size:15px;" style-hover="color:var(--text)">Research</a>
       <a href="#waitlist" style="text-decoration:none;background:var(--accent);color:var(--accent-text);font-size:15px;font-weight:600;padding:10px 18px;border-radius:9px;" style-hover="background:var(--accent2)">Request access</a>
     </div>
+    <button type="button" class="cue-nav-toggle" onClick="{{ toggleMenu }}" aria-label="Open menu" aria-expanded="{{ menuOpen }}">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
   </nav>
+  <div class="cue-nav-mobile" data-open="{{ menuOpenAttr }}" aria-hidden="{{ menuHidden }}">
+    <div class="cue-nav-mobile-head">
+      <a href="#top" onClick="{{ closeMenu }}" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);">
+        <span aria-hidden="true" style="position:relative;width:24px;height:24px;display:inline-block;flex:none;">
+          <span style="position:absolute;inset:0;border-radius:7px;background:var(--surface2);border:1px solid var(--border);"></span>
+          <span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:6px;height:6px;border-radius:50%;background:var(--accent);"></span>
+        </span>
+        <span style="font-size:19px;font-weight:600;letter-spacing:-0.02em;">Cue</span>
+      </a>
+      <button type="button" class="cue-nav-toggle" onClick="{{ closeMenu }}" aria-label="Close menu" style="display:flex;">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="cue-nav-mobile-links">
+      <a href="#how" onClick="{{ closeMenu }}">How it works</a>
+      <a href="#cases" onClick="{{ closeMenu }}">Use cases</a>
+      <a href="#why" onClick="{{ closeMenu }}">Why continual</a>
+      <a href="#research" onClick="{{ closeMenu }}">Research</a>
+    </div>
+    <div class="cue-nav-mobile-cta">
+      <a href="#waitlist" onClick="{{ closeMenu }}">Request access</a>
+    </div>
+  </div>
 
   <div id="top" style="position:relative;">
-    <div style="position:absolute;top:0;left:0;right:0;height:780px;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:58px 58px;-webkit-mask-image:radial-gradient(closest-side at 50% 0%,#000,transparent 78%);mask-image:radial-gradient(closest-side at 50% 0%,#000,transparent 78%);opacity:0.5;pointer-events:none;"></div>
-    <div style="position:absolute;top:-240px;left:50%;transform:translateX(-50%);width:820px;height:520px;background:radial-gradient(closest-side,var(--accent-soft),transparent 70%);opacity:0.55;pointer-events:none;"></div>
+    <div class="cue-hero-grid" style="position:absolute;top:0;left:0;right:0;height:780px;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:58px 58px;-webkit-mask-image:radial-gradient(closest-side at 50% 0%,#000,transparent 78%);mask-image:radial-gradient(closest-side at 50% 0%,#000,transparent 78%);opacity:0.5;pointer-events:none;"></div>
+    <div class="cue-hero-glow" style="position:absolute;top:-240px;left:50%;transform:translateX(-50%);width:820px;height:520px;background:radial-gradient(closest-side,var(--accent-soft),transparent 70%);opacity:0.55;pointer-events:none;"></div>
 
-    <section style="position:relative;max-width:1180px;margin:0 auto;padding:clamp(70px,10vw,120px) 32px clamp(50px,6vw,80px);">
-      <div aria-hidden="true" style="position:absolute;top:44px;right:8px;width:124px;height:124px;animation:irisFloat 5s ease-in-out infinite;z-index:2;">
+    <section class="cue-section-inner" style="position:relative;max-width:1180px;margin:0 auto;padding:clamp(70px,10vw,120px) 32px clamp(50px,6vw,80px);">
+      <div class="cue-hero-iris" aria-hidden="true" style="position:absolute;top:44px;right:8px;width:124px;height:124px;animation:irisFloat 5s ease-in-out infinite;z-index:2;">
         <div style="position:absolute;inset:0;border-radius:28px;background:var(--surface);border:1px solid var(--border);box-shadow:0 24px 60px -30px rgba(0,0,0,0.55);"></div>
         <div style="position:absolute;top:-13px;left:50%;transform:translateX(-50%);width:2px;height:13px;background:var(--accent);"></div>
         <div style="position:absolute;top:-21px;left:50%;transform:translateX(-50%);width:9px;height:9px;border-radius:50%;background:var(--accent);animation:irisPulse 2.6s ease-in-out infinite;"></div>
@@ -62,12 +127,12 @@ body{margin:0;}
 
         <div style="margin-top:40px;">
           <sc-if value="{{ notJoined }}" hint-placeholder-val="{{ true }}">
-            <form onSubmit="{{ join }}" style="display:flex;gap:10px;flex-wrap:wrap;max-width:540px;">
+            <form class="cue-form-row" onSubmit="{{ join }}" style="display:flex;gap:10px;flex-wrap:wrap;max-width:540px;">
               <input ref="{{ heroEmailRef }}" name="email" type="email" required placeholder="you@lab.ai" style="flex:1;min-width:220px;padding:15px 18px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:16px;font-family:inherit;outline:none;" style-focus="border-color:var(--accent)" />
               <button type="submit" style="padding:15px 26px;border-radius:10px;border:0;background:var(--accent);color:var(--accent-text);font-weight:600;font-size:16px;font-family:inherit;cursor:pointer;white-space:nowrap;" style-hover="background:var(--accent2)">Join the waitlist</button>
             </form>
             <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:12px;color:var(--text3);margin-top:12px;letter-spacing:0.02em;">Research preview · access granted on a rolling basis</div>
-            <div style="display:flex;align-items:center;gap:12px;margin-top:20px;">
+            <div class="cue-hero-social" style="display:flex;align-items:center;gap:12px;margin-top:20px;">
               <div style="display:flex;">
                 <span style="width:28px;height:28px;border-radius:50%;background:var(--accent-soft);border:2px solid var(--bg);box-shadow:0 0 0 1px var(--border);"></span>
                 <span style="width:28px;height:28px;border-radius:50%;background:var(--accent-soft);border:2px solid var(--bg);box-shadow:0 0 0 1px var(--border);margin-left:-9px;"></span>
@@ -78,7 +143,7 @@ body{margin:0;}
             </div>
           </sc-if>
           <sc-if value="{{ joined }}" hint-placeholder-val="{{ false }}">
-            <div style="display:flex;gap:14px;align-items:center;padding:18px 20px;border-radius:12px;border:1px solid var(--accent);background:var(--accent-soft);color:var(--text);max-width:540px;flex-wrap:wrap;">
+            <div class="cue-joined-banner" style="display:flex;gap:14px;align-items:center;padding:18px 20px;border-radius:12px;border:1px solid var(--accent);background:var(--accent-soft);color:var(--text);max-width:540px;flex-wrap:wrap;">
               <span style="color:var(--accent);font-size:18px;font-weight:700;">✓</span>
               <span style="font-size:16px;">You're in line at <strong>#{{ position }}</strong> — invite friends to move up.</span>
               <a href="#waitlist" style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:13px;color:var(--accent);text-decoration:none;margin-left:auto;white-space:nowrap;" style-hover="text-decoration:underline">Skip the line ↓</a>
@@ -90,24 +155,14 @@ body{margin:0;}
       <div style="margin-top:clamp(50px,6vw,80px);">
         <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);margin-bottom:14px;">Fig. 1 — Few-shot adaptation, live</div>
         <div style="position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;border:1px solid var(--border);background:var(--surface);box-shadow:0 30px 80px -40px rgba(0,0,0,0.6);">
-          <sc-if value="{{ notHeroVideoLoaded }}">
-            <button type="button" onClick="{{ loadHeroVideo }}" aria-label="Play few-shot adaptation demo" style="position:absolute;inset:0;width:100%;height:100%;border:0;background:linear-gradient(180deg,var(--surface2),var(--surface));color:var(--text);font-family:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;">
-              <span style="width:68px;height:68px;border-radius:50%;background:var(--accent);color:var(--accent-text);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 40px -12px var(--accent);">
-                <span style="display:block;width:0;height:0;border-top:11px solid transparent;border-bottom:11px solid transparent;border-left:18px solid currentColor;margin-left:5px;"></span>
-              </span>
-              <span style="font-size:15px;font-weight:600;letter-spacing:-0.01em;">Play demo</span>
-            </button>
-          </sc-if>
-          <sc-if value="{{ heroVideoLoaded }}">
-            <iframe src="{{ heroVideoUrl }}" allow="autoplay" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
-          </sc-if>
+          <iframe src="{{ heroVideoUrl }}" allow="autoplay; fullscreen" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0;"></iframe>
         </div>
       </div>
     </section>
   </div>
 
   <section id="how" style="border-top:1px solid var(--border);">
-    <div style="max-width:1180px;margin:0 auto;padding:clamp(80px,11vw,140px) 32px;">
+    <div class="cue-section-inner" style="max-width:1180px;margin:0 auto;padding:clamp(80px,11vw,140px) 32px;">
       <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:12.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;">01 — Method</div>
       <h2 style="font-size:clamp(30px,4vw,52px);line-height:1.05;letter-spacing:-0.03em;font-weight:600;margin:0;max-width:20ch;">From a support set to a working detector.</h2>
       <p style="font-size:clamp(16px,1.4vw,19px);line-height:1.55;color:var(--text2);max-width:60ch;margin:22px 0 0;">No annotation team, no per-frame masks. You define the action by example; the model handles generalization and keeps adapting online.</p>
@@ -133,31 +188,31 @@ body{margin:0;}
   </section>
 
   <section id="platform" style="border-top:1px solid var(--border);background:var(--surface2);">
-    <div style="max-width:1180px;margin:0 auto;padding:clamp(80px,11vw,140px) 32px;">
+    <div class="cue-section-inner" style="max-width:1180px;margin:0 auto;padding:clamp(80px,11vw,140px) 32px;">
       <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:12.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;">02 — The platform</div>
       <h2 style="font-size:clamp(30px,4vw,52px);line-height:1.05;letter-spacing:-0.03em;font-weight:600;margin:0;max-width:20ch;">See the platform in action.</h2>
       <p style="font-size:clamp(16px,1.4vw,19px);line-height:1.55;color:var(--text2);max-width:58ch;margin:22px 0 0;">Label a few clips, watch recognition appear, and correct it in place — the model sharpens from sparse feedback, live in the product.</p>
       <div style="max-width:1000px;margin:48px auto 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--bg);box-shadow:0 40px 90px -50px rgba(0,0,0,0.7);">
-        <div style="display:flex;align-items:center;gap:14px;padding:13px 16px;border-bottom:1px solid var(--border);background:var(--surface);">
+        <div class="cue-platform-bar" style="display:flex;align-items:center;gap:14px;padding:13px 16px;border-bottom:1px solid var(--border);background:var(--surface);">
           <div style="display:flex;gap:7px;">
             <span style="width:11px;height:11px;border-radius:50%;background:rgba(150,150,150,0.4);display:block;"></span>
             <span style="width:11px;height:11px;border-radius:50%;background:rgba(150,150,150,0.4);display:block;"></span>
             <span style="width:11px;height:11px;border-radius:50%;background:rgba(150,150,150,0.4);display:block;"></span>
           </div>
-          <div style="flex:1;display:flex;justify-content:center;">
-            <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:12px;color:var(--text3);background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:5px 16px;letter-spacing:0.02em;">app.cue.ai</div>
+          <div style="flex:1;display:flex;justify-content:center;min-width:0;">
+            <div class="cue-url-pill" style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:12px;color:var(--text3);background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:5px 16px;letter-spacing:0.02em;">app.cue.ai</div>
           </div>
-          <div style="width:46px;flex:none;"></div>
+          <div class="cue-platform-spacer" style="width:46px;flex:none;"></div>
         </div>
-        <div style="position:relative;width:100%;aspect-ratio:129/106;background:#000;">
-          <video autoplay loop muted playsinline preload="auto" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0;"><source src="assets/platform-demo.mp4" type="video/mp4" /></video>
+        <div onClick="{{ playPlatformVideo }}" style="position:relative;width:100%;aspect-ratio:129/106;background:#000;cursor:pointer;">
+          <video ref="{{ platformVideoRef }}" src="{{ platformVideoUrl }}" autoplay loop muted playsinline preload="auto" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0;pointer-events:none;"></video>
         </div>
       </div>
     </div>
   </section>
 
   <section id="cases" style="border-top:1px solid var(--border);">
-    <div style="max-width:1180px;margin:0 auto;padding:clamp(80px,11vw,140px) 32px;">
+    <div class="cue-section-inner" style="max-width:1180px;margin:0 auto;padding:clamp(80px,11vw,140px) 32px;">
       <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:12.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;">03 — Use cases</div>
       <h2 style="font-size:clamp(30px,4vw,52px);line-height:1.05;letter-spacing:-0.03em;font-weight:600;margin:0;max-width:20ch;">Any action you can show, Cue can learn to recognize.</h2>
 
@@ -197,7 +252,7 @@ body{margin:0;}
   </section>
 
   <section id="why" style="border-top:1px solid var(--border);background:var(--surface2);">
-    <div style="max-width:1180px;margin:0 auto;padding:clamp(80px,11vw,140px) 32px;">
+    <div class="cue-section-inner" style="max-width:1180px;margin:0 auto;padding:clamp(80px,11vw,140px) 32px;">
       <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:12.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;">04 — Why continual learning</div>
       <h2 style="font-size:clamp(30px,4vw,52px);line-height:1.05;letter-spacing:-0.03em;font-weight:600;margin:0 0 50px;max-width:18ch;">Continual, not periodic.</h2>
 
@@ -226,35 +281,35 @@ body{margin:0;}
 
   <sc-if value="{{ showResearch }}" hint-placeholder-val="{{ true }}">
   <section id="research" style="border-top:1px solid var(--border);">
-    <div style="max-width:1180px;margin:0 auto;padding:clamp(80px,11vw,140px) 32px;">
+    <div class="cue-section-inner" style="max-width:1180px;margin:0 auto;padding:clamp(80px,11vw,140px) 32px;">
       <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:12.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;">05 — Research</div>
       <h2 style="font-size:clamp(30px,4vw,52px);line-height:1.05;letter-spacing:-0.03em;font-weight:600;margin:0;max-width:20ch;">Grounded in peer-reviewed work.</h2>
       <p style="font-size:clamp(16px,1.4vw,19px);line-height:1.55;color:var(--text2);max-width:58ch;margin:22px 0 0;">The team behind Cue has published on continual learning, auto-labelling, and student–teacher models at top robotics and vision venues.</p>
 
       <div style="margin-top:52px;border-top:1px solid var(--border);">
-        <div style="display:grid;grid-template-columns:150px 1fr auto;gap:24px;align-items:baseline;padding:26px 6px;border-bottom:1px solid var(--border);" style-hover="background:var(--surface)">
-          <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:13px;color:var(--accent);letter-spacing:0.04em;">ERF 2026</div>
+        <div class="cue-research-row" style="display:grid;grid-template-columns:150px 1fr auto;gap:24px;align-items:baseline;padding:26px 6px;border-bottom:1px solid var(--border);" style-hover="background:var(--surface)">
+          <div class="cue-research-tag" style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:13px;color:var(--accent);letter-spacing:0.04em;">ERF 2026</div>
           <div>
             <h3 style="font-size:19px;font-weight:600;line-height:1.3;margin:0 0 6px;letter-spacing:-0.01em;">Continual learning for on-robot perception</h3>
             <p style="font-size:14.5px;line-height:1.55;color:var(--text2);margin:0;">Adapting recognition on-robot from sparse demonstrations, without offline retraining.</p>
           </div>
-          <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:13px;color:var(--text3);">Robotics</div>
+          <div class="cue-research-cat" style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:13px;color:var(--text3);">Robotics</div>
         </div>
-        <div style="display:grid;grid-template-columns:150px 1fr auto;gap:24px;align-items:baseline;padding:26px 6px;border-bottom:1px solid var(--border);" style-hover="background:var(--surface)">
-          <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:13px;color:var(--accent);letter-spacing:0.04em;">CVPR 2026</div>
+        <div class="cue-research-row" style="display:grid;grid-template-columns:150px 1fr auto;gap:24px;align-items:baseline;padding:26px 6px;border-bottom:1px solid var(--border);" style-hover="background:var(--surface)">
+          <div class="cue-research-tag" style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:13px;color:var(--accent);letter-spacing:0.04em;">CVPR 2026</div>
           <div>
             <h3 style="font-size:19px;font-weight:600;line-height:1.3;margin:0 0 6px;letter-spacing:-0.01em;">Data auto-labelling for video</h3>
             <p style="font-size:14.5px;line-height:1.55;color:var(--text2);margin:0;">Turning a handful of human labels into supervision at scale.</p>
           </div>
-          <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:13px;color:var(--text3);">Vision</div>
+          <div class="cue-research-cat" style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:13px;color:var(--text3);">Vision</div>
         </div>
-        <div style="display:grid;grid-template-columns:150px 1fr auto;gap:24px;align-items:baseline;padding:26px 6px;border-bottom:1px solid var(--border);" style-hover="background:var(--surface)">
-          <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:13px;color:var(--accent);letter-spacing:0.04em;">ICCV 2025</div>
+        <div class="cue-research-row" style="display:grid;grid-template-columns:150px 1fr auto;gap:24px;align-items:baseline;padding:26px 6px;border-bottom:1px solid var(--border);" style-hover="background:var(--surface)">
+          <div class="cue-research-tag" style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:13px;color:var(--accent);letter-spacing:0.04em;">ICCV 2025</div>
           <div>
             <h3 style="font-size:19px;font-weight:600;line-height:1.3;margin:0 0 6px;letter-spacing:-0.01em;">Student–teacher models for low-label learning</h3>
             <p style="font-size:14.5px;line-height:1.55;color:var(--text2);margin:0;">Distilling robust recognition from limited labelled signal.</p>
           </div>
-          <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:13px;color:var(--text3);">Vision</div>
+          <div class="cue-research-cat" style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:13px;color:var(--text3);">Vision</div>
         </div>
       </div>
     </div>
@@ -262,7 +317,7 @@ body{margin:0;}
   </sc-if>
 
   <section id="waitlist" style="border-top:1px solid var(--border);background:var(--surface2);">
-    <div style="max-width:760px;margin:0 auto;padding:clamp(90px,12vw,160px) 32px;text-align:center;">
+    <div class="cue-section-inner" style="max-width:760px;margin:0 auto;padding:clamp(90px,12vw,160px) 32px;text-align:center;">
       <div aria-hidden="true" style="position:relative;width:80px;height:80px;margin:0 auto 26px;animation:irisFloat 5s ease-in-out infinite;">
         <div style="position:absolute;inset:0;border-radius:20px;background:var(--bg);border:1px solid var(--border);"></div>
         <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);width:2px;height:10px;background:var(--accent);"></div>
@@ -279,7 +334,7 @@ body{margin:0;}
       <p style="font-size:clamp(17px,1.5vw,20px);line-height:1.55;color:var(--text2);margin:24px auto 40px;max-width:48ch;">We're granting access on a rolling basis to teams working on continual learning and video understanding.</p>
 
       <sc-if value="{{ notJoined }}" hint-placeholder-val="{{ true }}">
-        <form onSubmit="{{ join }}" style="display:flex;gap:10px;flex-wrap:wrap;max-width:520px;margin:0 auto;justify-content:center;">
+        <form class="cue-form-row" onSubmit="{{ join }}" style="display:flex;gap:10px;flex-wrap:wrap;max-width:520px;margin:0 auto;justify-content:center;">
           <input ref="{{ footerEmailRef }}" name="email" type="email" required placeholder="you@lab.ai" style="flex:1;min-width:220px;padding:16px 18px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:16px;font-family:inherit;outline:none;" style-focus="border-color:var(--accent)" />
           <button type="submit" style="padding:16px 28px;border-radius:10px;border:0;background:var(--accent);color:var(--accent-text);font-weight:600;font-size:16px;font-family:inherit;cursor:pointer;white-space:nowrap;" style-hover="background:var(--accent2)">Join the waitlist</button>
         </form>
@@ -294,11 +349,11 @@ body{margin:0;}
           <div style="font-size:clamp(52px,9vw,88px);line-height:1;font-weight:600;letter-spacing:-0.04em;">#{{ position }}</div>
           <div style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text3);margin-top:12px;">Your spot in line</div>
           <p style="font-size:16.5px;line-height:1.55;color:var(--text2);margin:24px auto 26px;max-width:42ch;">Skip ahead — every person who joins with your link moves you up <strong style="color:var(--text);">50 spots</strong>.</p>
-          <div style="display:flex;align-items:center;gap:6px;padding:6px 6px 6px 18px;border-radius:11px;border:1px solid var(--border);background:var(--bg);max-width:460px;margin:0 auto;">
+          <div class="cue-ref-row" style="display:flex;align-items:center;gap:6px;padding:6px 6px 6px 18px;border-radius:11px;border:1px solid var(--border);background:var(--bg);max-width:460px;margin:0 auto;">
             <span style="flex:1;text-align:left;font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,monospace;font-size:14px;color:var(--text2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ refLink }}</span>
             <button onClick="{{ copyLink }}" style="padding:11px 18px;border-radius:8px;border:0;background:var(--accent);color:var(--accent-text);font-weight:600;font-size:14px;font-family:inherit;cursor:pointer;white-space:nowrap;" style-hover="background:var(--accent2)">{{ copyLabel }}</button>
           </div>
-          <div style="display:flex;gap:10px;margin:12px auto 0;max-width:460px;">
+          <div class="cue-social-row" style="display:flex;gap:10px;margin:12px auto 0;max-width:460px;">
             <button onClick="{{ shareX }}" style="flex:1;padding:13px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;" style-hover="border-color:var(--accent)">Share on X</button>
             <button onClick="{{ shareIn }}" style="flex:1;padding:13px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;" style-hover="border-color:var(--accent)">Share on LinkedIn</button>
           </div>
@@ -308,7 +363,7 @@ body{margin:0;}
   </section>
 
   <footer style="border-top:1px solid var(--border);">
-    <div style="max-width:1180px;margin:0 auto;padding:36px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+    <div class="cue-footer-inner" style="max-width:1180px;margin:0 auto;padding:36px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
       <div style="display:flex;align-items:center;gap:10px;">
         <span style="width:10px;height:10px;border-radius:50%;background:var(--accent);display:inline-block;"></span>
         <span style="font-size:16px;font-weight:600;letter-spacing:-0.02em;">Cue</span>
@@ -323,10 +378,27 @@ body{margin:0;}
 class Component extends DCLogic {
   static WAITLIST_URL = 'https://script.google.com/macros/s/AKfycbyCsOMz3OuPwGaWyZruUCoz2F77Ap7OuMDFQVbJlBpN9PIGbXKUFUNdsHfEqgjXJA4U/exec';
 
-  state = { joined: false, refCode: '', position: 0, copied: false, heroVideoLoaded: false };
+  state = { joined: false, refCode: '', position: 0, copied: false, menuOpen: false };
   rootRef = React.createRef();
   heroEmailRef = React.createRef();
   footerEmailRef = React.createRef();
+  platformVideoRef = React.createRef();
+
+  assetUrl(path) {
+    try {
+      return new URL(path, window.location.href).href;
+    } catch (e) {
+      return path;
+    }
+  }
+
+  playPlatformVideo = () => {
+    const video = this.platformVideoRef.current;
+    if (!video) return;
+    video.muted = true;
+    const play = video.play();
+    if (play && play.catch) play.catch(() => {});
+  };
 
   getEmailFromEvent(e) {
     const form = e?.currentTarget || e?.target?.closest?.('form') || e?.target;
@@ -384,8 +456,30 @@ class Component extends DCLogic {
     root.style.setProperty('--accent-text', ac.text);
   }
 
-  componentDidMount() { this.applyTheme(); }
-  componentDidUpdate() { this.applyTheme(); }
+  componentDidMount() {
+    this.applyTheme();
+    requestAnimationFrame(() => this.playPlatformVideo());
+  }
+
+  componentDidUpdate(_prevProps, prevState) {
+    this.applyTheme();
+    if (this.platformVideoRef.current?.paused) this.playPlatformVideo();
+    if (prevState?.menuOpen !== this.state.menuOpen) {
+      document.body.style.overflow = this.state.menuOpen ? 'hidden' : '';
+    }
+  }
+
+  toggleMenu = () => {
+    this.setState({ menuOpen: !this.state.menuOpen });
+  };
+
+  closeMenu = () => {
+    if (this.state.menuOpen) this.setState({ menuOpen: false });
+  };
+
+  componentWillUnmount() {
+    document.body.style.overflow = '';
+  }
 
   join = (e) => {
     if (e) e.preventDefault();
@@ -420,27 +514,27 @@ class Component extends DCLogic {
     window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(this.refLink()), '_blank', 'noopener');
   };
 
-  loadHeroVideo = () => {
-    if (this.state.heroVideoLoaded) return;
-    this.setState({ heroVideoLoaded: true });
-  };
-
   renderVals() {
     return {
       rootRef: this.rootRef,
       heroEmailRef: this.heroEmailRef,
       footerEmailRef: this.footerEmailRef,
+      platformVideoRef: this.platformVideoRef,
       joined: this.state.joined,
       notJoined: !this.state.joined,
       position: this.state.position ? this.state.position.toLocaleString() : '',
       refLink: this.refLink(),
       copied: this.state.copied,
       copyLabel: this.state.copied ? 'Copied' : 'Copy link',
+      menuOpen: this.state.menuOpen,
+      menuOpenAttr: this.state.menuOpen ? 'true' : 'false',
+      menuHidden: this.state.menuOpen ? 'false' : 'true',
+      toggleMenu: this.toggleMenu,
+      closeMenu: this.closeMenu,
       showResearch: this.props.showResearch ?? true,
-      heroVideoLoaded: this.state.heroVideoLoaded,
-      notHeroVideoLoaded: !this.state.heroVideoLoaded,
       heroVideoUrl: 'https://drive.google.com/file/d/1_JSV0N_gkXMM5sReI72QT85qVFHsMir5/preview',
-      loadHeroVideo: this.loadHeroVideo,
+      platformVideoUrl: this.assetUrl('assets/platform-demo.mp4'),
+      playPlatformVideo: this.playPlatformVideo,
       join: this.join,
       copyLink: this.copyLink,
       shareX: this.shareX,
